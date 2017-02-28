@@ -49,6 +49,7 @@ def hit?(n)
     n
   else
     invalid_command
+    hit?(n)
   end
 end
 
