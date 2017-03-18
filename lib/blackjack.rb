@@ -53,14 +53,28 @@ end
 # get every test to pass before coding runner below #
 #####################################################
 
+
 def runner
-    
     welcome
-    x=initial_round
-    y=hit?(x)
-    display_card_total(y)
-    if y >21
-        end_game(y)
-        end
+    x = initial_round
+     loop do
+        x=hit?(x)
+        display_card_total(x)
+    if x>21
+        break
+    end
+    end
+    end_game(x)
 end
+
+#def runner
+#
+#   welcome
+#   x=initial_round
+#   y=hit?(x)
+#   display_card_total(y)
+#   if y >21
+#        end_game(y)
+#    end
+#end
     
