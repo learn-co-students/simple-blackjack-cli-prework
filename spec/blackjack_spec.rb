@@ -83,7 +83,7 @@ describe "#hit?" do
     hit?(7)
   end
 
-  it "returns an integer which is the card total" do
+it "returns an integer which is the card total" do
     expect(self).to receive(:get_user_input).and_return("s")
     expect(hit?(20)).to eq(20)
   end
