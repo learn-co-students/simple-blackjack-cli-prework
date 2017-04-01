@@ -57,12 +57,6 @@ def invalid_command
   puts "Please enter a valid command"
 end
 
-#Please enter a valid command
-#Type 'h' to hit or 's' to stay
-#Your cards add up to 5
-#Type 'h' to hit or 's' to stay
-
-
 #####################################################
 # get every test to pass before coding runner below #
 #####################################################
