@@ -46,6 +46,15 @@ def hit?(card_total)
   elsif hit_or_stay  == 's'
     return card_total
 
+  elsif hit_or_stay == 'exit'
+    puts "Sorry you don't want to play. Guess you have better things to do..."
+    sleep(2)
+    puts "<><><><><><><><><><><><><><><><><><><><><><><><><>"
+    puts "<>                 BYE FOREVER                  <>"
+    puts "<><><><><><><><><><><><><><><><><><><><><><><><><>"
+    sleep(2)
+    exit
+
   else
     invalid_command
     return card_total
