@@ -5,7 +5,7 @@ def welcome
 end
 
 def deal_card
-  rand(1..6)
+  rand(1..11)
 end
 
 def display_card_total(card_total)
@@ -55,8 +55,13 @@ end
 
 def invalid_command
   puts "Please enter a valid command"
-  prompt_user
 end
+
+#Please enter a valid command
+#Type 'h' to hit or 's' to stay
+#Your cards add up to 5
+#Type 'h' to hit or 's' to stay
+
 
 #####################################################
 # get every test to pass before coding runner below #
