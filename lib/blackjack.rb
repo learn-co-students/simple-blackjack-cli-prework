@@ -56,12 +56,12 @@ end
 #####################################################
 
 def runner
+  card_total = 0
   welcome
-  counter = initial_round #counter = card_total; "Your cards add up to #{blah}"
-  while counter < 21
-    result = hit?(counter)
-    display_card_total(result)
-    counter += 1
+  card_total += initial_round
+  until card_total > 21
+    card_total = hit?(card_total)
+    display_card_total(card_total)
   end
-  end_game(result)
+  end_game(card_total)
 end
