@@ -1,3 +1,6 @@
 require_relative "blackjack.rb"
 
-runner
+
+
+
+new_runner
