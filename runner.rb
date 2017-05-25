@@ -1,5 +1,3 @@
-
-
 def welcome
   # code #welcome here
   puts "Welcome to the Blackjack Table"
@@ -50,21 +48,13 @@ end
 #####################################################
 # get every test to pass before coding runner below #
 #####################################################
-# rspec failtures: 
-#runner calls on the #welcome method, 
-  # then on the #initial_round method, 
-  # then calls #hit? and #display_card_total methods
-  # -until- the card sum is greater than 21,
-  # then calls on the #end_game method
+
 def runner 
-
-
   welcome
-  current_total = initial_round # 10 + 10 
-    until current_total > 21
-      hit? current_total
-      current_total += deal_card
-      display_card_total current_total
-    end
-    end_game current_total
+  current_total = initial_round
+  until current_total > 21
+    current_total += hit?(current_total)
+    display_card_total(current_total)
+  end
+  end_game(current_total)
 end
