@@ -66,8 +66,7 @@ def runner
   end
   if card_total == 21
     winner!
-  else
-    end_game(card_total)
   end
+end_game(card_total)
 end
 
