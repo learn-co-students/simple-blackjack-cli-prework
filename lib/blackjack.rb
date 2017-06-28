@@ -1,44 +1,79 @@
+require 'pry'
 def welcome
-  # code #welcome here
+  puts "Welcome to the Blackjack Table"
 end
+# welcomes player
 
 def deal_card
-  # code #deal_card here
+  rand(1..11)
 end
-
-def display_card_total
-  # code #display_card_total here
-end
+#deals one card (useless on its own)
 
 def prompt_user
-  # code #prompt_user here
+  puts "Type 'h' to hit or 's' to stay"
 end
+#prompts user to deal_card or not
+
+def display_card_total(card_total)
+  puts "Your cards add up to #{card_total}"
+  card_total
+end
+#displays card total but does not do calculations?
 
 def get_user_input
-  # code #get_user_input here
+  input = gets.chomp
+  #input
+end
+# takes in input s or p
+
+def end_game(card_total)
+  puts "Sorry, you hit #{card_total}. Thanks for playing!"
 end
 
-def end_game
-  # code #end_game here
-end
+# runs at the end of the game
 
 def initial_round
-  # code #initial_round here
+  display_card_total(deal_card + deal_card)
+  # binding.pry
 end
-
-def hit?
-  # code hit? here
-end
+# returns a value of the first round i.e initial_round ?
 
 def invalid_command
-  # code invalid_command here
+  puts  "Please enter a valid command"
 end
 
-#####################################################
-# get every test to pass before coding runner below #
+def hit?(initial_round)
+  prompt_user
+  # says hello
+  answer = get_user_input
+  # input stored as answer
+  if answer == 'h'
+    total = deal_card + initial_round
+  elsif answer == 's'
+    total = initial_round
+  else
+    invalid_command
+    prompt_user
+  end
+  total
+  # returns the new total
+end
 #####################################################
 
 def runner
-  # code runner here
+  welcome
+  #initial_round
+  new_total = hit?(initial_round)
+  # display_card_total(new_total)
+  sum = 0
+  while sum < 21
+    # binding.pry
+    sum += new_total
+    #puts "we're summing again"
+    display_card_total(sum)
+    #puts "WHY ARE WE DOING THIS TWICE"
+  end
+  end_game(sum)
 end
-    
+
+runner
