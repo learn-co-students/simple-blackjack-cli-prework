@@ -1,3 +1,3 @@
-require_relative "blackjack.rb"
+require "blackjack.rb"
 
 runner
