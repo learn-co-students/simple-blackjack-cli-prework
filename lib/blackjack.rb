@@ -1,61 +1,96 @@
-def welcome
-    puts "Welcome to the Blackjack Table"
+def welcome()
+
+    puts 'Welcome to the Blackjack Table'
+
 end
 
-def deal_card
-    1 + rand(11)
+
+def deal_card()
+
+    return randCard = rand(1..11)
+
 end
 
-def display_card_total(total)
-    puts "Your cards add up to #{total}"
+
+def display_card_total(cardTotal)
+
+    puts "Your cards add up to #{cardTotal}"
+
 end
 
-def prompt_user
+
+def prompt_user()
+
     puts "Type 'h' to hit or 's' to stay"
-end
-
-def get_user_input
-    gets.chomp
 
 end
 
-def end_game(num)
-    puts "Sorry, you hit #{num}. Thanks for playing!"
+
+def get_user_input()
+
+    return gets.chomp
+
 end
 
-def initial_round
-    cardSum = deal_card + deal_card
-    display_card_total(cardSum)
-    cardSum
+
+def end_game(cardTotal)
+
+    puts "Sorry, you hit #{cardTotal}. Thanks for playing!"
+
 end
 
-def hit?(total)
-    newTotal = total
+
+def initial_round()
+
+    initTotal = deal_card + deal_card
+    display_card_total(initTotal)
+    return initTotal
+
+end
+
+
+def hit?(initTotal)
+
     prompt_user
-    x = get_user_input
-    if x == 's'
-        total
-    elsif x == 'h'
-        newTotal += deal_card
-        display_card_total(newTotal)
-        newTotal
+    userInput = get_user_input()
+    #--
+    #===============
+    case (userInput)
+
+    when 'h'
+
+        initTotal + deal_card()
+
+
+    when 's'
+
+        return initTotal
+
     else
-        puts invalid_command
-        prompt_user
-        total
+
+        invalid_command()
+
     end
+    #===============
 end
 
-def invalid_command
-    "Please enter a valid command"
-end
-#####################################################
-# get every test to pass before coding runner below #
-#####################################################
+def invalid_command()
 
-def runner
-    welcome
-    x = initial_round
-    y = hit?(x)
-    end_game(y)
+    puts 'Please enter a valid command'
+
+end
+
+#========================[RUNNER]================================
+
+def runner()
+
+    welcome()
+    current = initial_round
+    #--
+
+    until current > 21
+        current = hit?(current)
+        display_card_total(current)
+    end
+    end_game(current)
 end
