@@ -1,9 +1,11 @@
+require 'pry'
+
 def welcome
   puts "Welcome to the Blackjack Table"
 end
 
 def deal_card
-  return rand(1..11)
+  rand(1..11)
 end
 
 def display_card_total(cardTotal)
@@ -53,10 +55,11 @@ end
 #####################################################
 
 def runner
-  # welcome
-  # cardTotal = initial_round
-  # until cardTotal > 21
-  #   hit?(cardTotal)
-  # end
-  # end_game
+  welcome
+  cardTotal = initial_round
+  until cardTotal > 21
+    cardTotal = hit?(cardTotal)
+    display_card_total(cardTotal)
+  end
+  end_game
 end
