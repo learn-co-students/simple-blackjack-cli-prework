@@ -32,15 +32,13 @@ def hit?(card_total)
   # why are we naming the method hit? if it returns int, not bool
   prompt_user
   ans = get_user_input
-  if ans == "h"
-    card_total += deal_card
-    return card_total
-  elsif ans == "s"
-    return card_total
-  else
+  until ans == "h" || ans == "s"
     invalid_command
-    # using recursion to repeat valid options to user
-    return hit?(card_total)
+    prompt_user
+    ans = get_user_input
+  end
+  if ans == "h"
+    return card_total += deal_card
   end
   return card_total
 end
