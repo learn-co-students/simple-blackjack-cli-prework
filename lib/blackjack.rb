@@ -24,6 +24,7 @@ end
 
 def initial_round
   total = deal_card + deal_card
+  total == 22 ? total = 12 : total = total
   display_card_total(total)
   total
 end
