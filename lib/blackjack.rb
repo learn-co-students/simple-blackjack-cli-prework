@@ -53,6 +53,23 @@ end
 # get every test to pass before coding runner below #
 #####################################################
 
+def try_again?
+  puts "Would you like to try again? Y/N?"
+  input = gets.chomp
+  until input == "Y" || input == "y" || input == "N" || input =="n"
+    puts "What, no that's not an option"
+    puts "Would you like to try again? Y/N?"
+    input = gets.chomp
+  end
+  if input == "Y" || input == "y"
+    runner
+    try_again?
+  elsif input == "N" || input == "n"
+    puts "Goodbye!"
+  end
+end
+
+
 def runner
   welcome
   card_total = initial_round
@@ -65,18 +82,3 @@ end
 
 #with the below method, I can only get the program to run twice if "y"
 #I will need to come back later to properly figure out how to keep it running
-
-def try_again?
-  puts "Would you like to try again? Y/N?"
-  input = gets.chomp
-  until input == "Y" || input == "y" || input == "N" || input =="n"
-    puts "What, no that's not an option"
-    puts "Would you like to try again? Y/N?"
-    input = gets.chomp
-  end
-  if input == "Y" || input == "y"
-    runner
-  elsif input == "N" || input == "n"
-    puts "Goodbye!"
-  end
-end
