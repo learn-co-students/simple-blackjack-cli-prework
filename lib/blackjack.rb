@@ -3,7 +3,7 @@ def welcome
 end
 
 def deal_card
-  card = rand(1..11) 
+  card = rand(1..11)
 end
 
 def display_card_total(card_total)
@@ -14,33 +14,41 @@ def prompt_user
   puts "Type 'h' to hit or 's' to stay"
 end
 
-
 def get_user_input
-  user_input = gets.chomp
-end
-
-def end_game(card_total)
-  puts "Sorry, you hit #{card_total}. Thanks for playing!"
+  gets.chomp
 end
 
 def initial_round
   card_one = deal_card
   card_two = deal_card
   card_total = card_one + card_two
-  display_card_total(card_total) #once you have figured out the sum of your two cards, you can pass the total in as an argumnt so your phrase is displayed.
+  display_card_total(card_total)
   return card_total
+  twentyone
 end
 
+def twentyone
+  if card_total == 21
+    puts " You win!! You hit 21! Blackjack!!"
+  end
+end
+
+
 def hit?(card_total)
-  prompt_user #ask the user if they want to hit or stay
-  user_input = get_user_input #set a variable to use for your if/else statement
-  if user_input == "h"
-    card_total += deal_card #increase your former total by the new number given by dealing another card
-  elsif user_input == "s"
-    card_total #return the number and prompt user to hit again
+  prompt_user
+  user_input = get_user_input
+  if user_input == "s"
+    #card_total != 21
+    end_game
+  elsif user_input == "h"
+    card_total += deal_card
   else
     invalid_command
   end
+end
+
+def end_game (card_total)
+  puts "Sorry, #{card_total} is not equal to 21. Thanks for playing!"
 end
 
 def invalid_command
@@ -54,45 +62,12 @@ end
 #####################################################
 
 def runner
-  welcome #introduce the game
+  welcome
   sleep 0.75
-  card_total = initial_round #determine your current total & tell user what number they currently have
-  until card_total > 21 #continue game until user loses
+  card_total = initial_round
+  until card_total > 21
     card_total = hit?(card_total)
     display_card_total(card_total)
   end
-  end_game(card_total) #prints out once user has lost
+  end_game(card_total)
 end
-
-runner 
-
-
-
-def get_user_input
-  # code #get_user_input here
-end
-
-def end_game
-  # code #end_game here
-end
-
-def initial_round
-  # code #initial_round here
-end
-
-def hit?
-  # code hit? here
-end
-
-def invalid_command
-  # code invalid_command here
-end
-
-#####################################################
-# get every test to pass before coding runner below #
-#####################################################
-
-def runner
-  # code runner here
-end
-    
