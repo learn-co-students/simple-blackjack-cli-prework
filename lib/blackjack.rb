@@ -61,6 +61,8 @@ end
 def runner
   # code runner here
   welcome
-  initial_round
+  cards = initial_round
+  hit?(cards)
+  display_card_total(cards)
 end
     
