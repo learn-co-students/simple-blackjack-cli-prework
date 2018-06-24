@@ -19,13 +19,13 @@ def get_user_input
 end
 
 def end_game(card_total)
-  puts  "Sorry, you hit #{card_total}. Thanks for playing!"
+  puts "Sorry, you hit #{card_total}. Thanks for playing!"
 end
 
 def initial_round
   total = 0
   2.times do
-   total += deal_card
+    total += deal_card
   end
   display_card_total(total)
   return total
@@ -35,15 +35,16 @@ def hit?(card_total)
   prompt_user
   ret = get_user_input
   while ret != "s" && ret != "h"
-  invalid_command
-  prompt_user
+    invalid_command
+    prompt_user
+    ret = get_user_input
   end
-  card_total+=deal_card if ret == "h"
+  card_total += deal_card if ret == "h"
   return card_total
 end
 
 def invalid_command
-  puts  "Please enter a valid command"
+  puts "Please enter a valid command"
 end
 
 #####################################################
@@ -54,10 +55,9 @@ def runner
   welcome
   card_total = initial_round
   until card_total >= 21
-  hit?(card_total)
-  display_card_total(card_total)
-  end 
-end_game(card_total) if card_total > 21
-  
+    card_total = hit?(card_total)
+    display_card_total(card_total)
+  end
+  end_game(card_total) if card_total > 21
 end
     
