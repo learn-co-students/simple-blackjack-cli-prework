@@ -6,12 +6,8 @@ end
 
 def deal_card
   
-  card = Random.new(11)
-  card.rand(1..11)
-  dealt = card.rand(1..11) 
+  rand(1..11) 
   
-  return dealt
- 
 end
 
 def display_card_total(cards_total)
@@ -28,14 +24,13 @@ end
 
 def get_user_input
   
-   gets.chomp
+   gets.chomp.strip
 
 end
 
 def end_game(cards_total)
   
     puts "Sorry, you hit #{cards_total}. Thanks for playing!"
-  end
   
 end
 
@@ -53,14 +48,14 @@ def hit?(cards_total)
   prompt_user
   answer = get_user_input
   
-  until (answer == "h" || answer == "s")
+  if (answer != 'h' && answer != 's')
     invalid_command
     prompt_user
     answer = get_user_input
   end
   
-  if answer == "h"
-    cards_total += deal_card
+  if answer == 'h'
+    return cards_total += deal_card
   end
   
   return cards_total
@@ -81,7 +76,7 @@ def runner
   cards_total = initial_round
   
   until cards_total > 21
-    hit?(cards_total)
+    cards_total = hit?(cards_total)
     display_card_total(cards_total)
   end
   
