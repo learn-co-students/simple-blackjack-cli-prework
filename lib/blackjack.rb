@@ -1,6 +1,3 @@
-
-current_card_total = 0
-
 def welcome
   # code #welcome here
   puts "Welcome to the Blackjack Table"
@@ -35,7 +32,7 @@ def initial_round
   # code #initial_round here
   current_card_total = deal_card + deal_card
   display_card_total(current_card_total)
-  current_card_total
+  return current_card_total
 end
 
 def hit?(current_card_total)
@@ -50,8 +47,10 @@ def hit?(current_card_total)
     until response == "h" || "s"
       invalid_command
       prompt_user
+      response = get_user_input
     end
   end
+  return current_card_total
 end
 
 def invalid_command
@@ -65,6 +64,7 @@ end
 
 def runner
   # code runner here
+  current_card_total = initial_round
   welcome
   initial_round
   until current_card_total > 21
