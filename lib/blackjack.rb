@@ -30,7 +30,8 @@ end
 
 def initial_round
   # code #initial_round here
-  current_card_total = deal_card + deal_card
+  current_card_total = deal_card
+  current_card_total += deal_card
   display_card_total(current_card_total)
   return current_card_total
 end
@@ -64,11 +65,11 @@ end
 
 def runner
   # code runner here
-  current_card_total = initial_round
+
   welcome
-  initial_round
+  current_card_total = initial_round
   until current_card_total > 21
-     hit?(current_card_total)
+     current_card_total = hit?(current_card_total)
      display_card_total(current_card_total)
   end
   end_game(current_card_total)
