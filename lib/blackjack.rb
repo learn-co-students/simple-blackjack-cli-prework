@@ -6,8 +6,8 @@ def deal_card
   1 + rand(11)
 end
 
-def display_card_total(card)
-  puts "Your cards add up to #{card}"
+def display_card_total(card_total)
+  puts "Your cards add up to #{card_total}"
 end
 
 
@@ -33,18 +33,37 @@ def initial_round
   return card_total
   end
 
-def hit?
-  # code hit? here
+def hit?(card_total)
+  prompt_user
+  input = get_user_input
+  if input == "s"
+    card_total
+  elsif input == "h"
+    deal_card + card_total
+  else invalid_command
+  end
 end
 
+
 def invalid_command
-  # code invalid_command here
+  puts "Please enter a valid command."
+  prompt_user
+  get_user_input
 end
 
 #####################################################
 # get every test to pass before coding runner below #
 #####################################################
 
+
+
+
 def runner
-  # code runner here
+  welcome
+  card_total = initial_round
+  until card_total > 21
+    card_total = hit?(card_total)
+    display_card_total(card_total)
+  end
+end_game(card_total)
 end
