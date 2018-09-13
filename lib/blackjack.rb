@@ -34,19 +34,19 @@ def initial_round
   sum_of_cards # returns the sum
 end
 
-def hit?(sum_of_cards)
+def hit?(sum_of_cards) # takes an arg of current card total
   prompt_user # call on prompt_user
-  hit_or_stay_answer = get_user_input # get and store the input
+  input = get_user_input # get and store the input
 
-  if hit_or_stay_answer = "s"
+  if input == "s"
     return sum_of_cards
-  elsif hit_or_stay_answer = "h"
+  elsif input == "h"
     return sum_of_cards + deal_card # deal a new card and add that # to the sum_of_cards
   else
     invalid_command # else, call invalid_command method
     prompt_user # remind user of valid command with the prompt
   end
-  sum_of_cards # returns an int, the sum of cards
+  return sum_of_cards # returns an int, the sum of cards
 end
 
 def invalid_command
@@ -59,5 +59,11 @@ end
 #####################################################
 
 def runner
-  # code runner here
+  welcome   # welcome the user
+  sum_of_cards = initial_round # set starting value of sum of cards which is initial round
+  until sum_of_cards > 21 # until card sum is greater than 21
+    sum_of_cards = hit?(sum_of_cards)  # assigning sum of a cards a new value after calling the hit method
+    display_card_total(sum_of_cards)
+  end
+end_game(sum_of_cards) # then call end game
 end
