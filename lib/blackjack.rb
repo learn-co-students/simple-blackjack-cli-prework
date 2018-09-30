@@ -32,12 +32,45 @@ def initial_round
   return card_total
 end
 
-def hit?
-  # code hit? here
+
+def hit?(initial_hand) # intial_hand is the intial_round output. 
+
+  prompt_user
+  user_input = get_user_input
+
+  if user_input == "h"
+    next_card = deal_card
+    current_card_total = initial_hand + next_card
+    return current_card_total
+
+  elsif user_input == "s"
+    current_card_total = initial_hand
+    return current_card_total
+  else
+    invalid_command
+
+    loop do
+      prompt_user
+      user_input = get_user_input
+      if user_input == "h"
+        new_card = deal_card
+        current_card_total = initial_hand + new_card
+        return current_card_total
+
+      elsif user_input == "s"
+        current_card_total = initial_hand
+        return current_card_total
+      else
+        invalid_command
+      end
+    end
+
+  end
+
 end
 
 def invalid_command
-  # code invalid_command here
+  puts "Please enter a valid command"
 end
 
 #####################################################
