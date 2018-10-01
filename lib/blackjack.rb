@@ -33,7 +33,7 @@ def initial_round
 end
 
 
-def hit?(initial_hand) # intial_hand is the intial_round output. 
+def hit?(initial_hand) # intial_hand is the intial_round output.
 
   prompt_user
   user_input = get_user_input
@@ -78,5 +78,17 @@ end
 #####################################################
 
 def runner
-  # code runner here
+  welcome
+  #initial_round
+  cards_in_hand = initial_round
+
+  counter = 0
+  until counter >21
+    #hit?(cards_in_hand)
+    counter = hit?(cards_in_hand)
+    display_card_total(counter)
+  end
+
+  end_game(counter)
+
 end
