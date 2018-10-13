@@ -42,7 +42,7 @@ def hit?(current_card_value)
   elsif user_input == "s"
     card_total
   else
-    invalid_command
+    hit?(current_card_value)
   end
   return current_card_value
 end
