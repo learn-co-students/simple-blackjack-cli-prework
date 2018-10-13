@@ -8,7 +8,6 @@ end
 
 def display_card_total(card_total)
   puts "Your cards add up to #{card_total}"
-  card_total
 end
 
 def prompt_user
@@ -16,7 +15,8 @@ def prompt_user
 end
 
 def get_user_input
-  gets
+  value = gets.strip
+  value
 end
 
 def end_game(card_total)
@@ -24,8 +24,12 @@ def end_game(card_total)
 end
 
 def initial_round
-  display_card_total(deal_card)
-  return deal_card + deal_card
+  total = deal_card + deal_card
+  display_card_total(total)
+  return total
+  #display_card_total(deal_card)
+  #return deal_card + deal_card
+
   #sum = rand(1..11) + rand(1..11)
   #display_card_total(sum)
 end
