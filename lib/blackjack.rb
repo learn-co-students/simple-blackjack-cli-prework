@@ -15,8 +15,7 @@ def prompt_user
 end
 
 def get_user_input
-  value = gets.strip
-  value
+  gets.strip.chomp
 end
 
 def end_game(card_total)
@@ -40,8 +39,9 @@ def hit?(current_card_value)
   if user_input == "h"
     current_card_value += deal_card
   elsif user_input == "s"
-    card_total
+    current_card_value
   else
+    invalid_command
     hit?(current_card_value)
   end
   return current_card_value
@@ -66,5 +66,3 @@ def runner
   end
   end_game(card_total)
 end
-
-runner
