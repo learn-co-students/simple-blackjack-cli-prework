@@ -35,10 +35,26 @@ def hit?(card_total)
   response = get_user_input
   if response == "h"
     card_total += deal_card
-    display_card_total(card_total)
     return card_total
   elsif response == "s"
-    display_card_total(card_total)
+    return card_total
+  else
+    invalid_command
+    prompt_user
+    response = get_user_input
+end
+end
+
+def invalid_command
+    puts "Please enter a valid command"
+end
+
+def hit?(card_total)
+  prompt_user
+  response = get_user_input
+  if response == "h"
+    card_total += deal_card
+  elsif response == "s"
     return card_total
   else
     invalid_command
@@ -55,7 +71,14 @@ end
 # get every test to pass before coding runner below #
 #####################################################
 
-# def runner
-#   # code runner here
-# end
-    
+def runner
+  welcome
+  total = initial_round
+  until total > 21
+    total = hit?(total)
+    display_card_total(total)
+  end
+  end_game(total)
+end
+
+
