@@ -42,7 +42,7 @@ def hit?(hand_total)
   end
 end
 
-def invalid_command(input)
+def invalid_command
   puts "Please enter a valid command"
   prompt_user
   get_user_input
