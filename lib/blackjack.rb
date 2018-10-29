@@ -7,16 +7,19 @@ def deal_card
   card = rand(1..11)
 end
 
-def display_card_total
+def display_card_total(card)
   # code #display_card_total here
+  puts card
 end
 
 def prompt_user
   # code #prompt_user here
+  puts "Type 'h' to hit or 's' to stay"
 end
 
 def get_user_input
   # code #get_user_input here
+  user_input = gets.chomp
 end
 
 def end_game
@@ -29,6 +32,12 @@ end
 
 def hit?
   # code hit? here
+  prompt_user
+  get_user_input
+  if user_input == "h"
+    card
+  elsif user_input == "s"
+  end 
 end
 
 def invalid_command
