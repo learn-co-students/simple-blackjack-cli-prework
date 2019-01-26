@@ -20,7 +20,7 @@ def prompt_user
 end
 
 def get_user_input
-  user_input = gets.chomp()
+  user_input = gets.chomp.strip
 end
 
 def end_game(card_total)
@@ -30,26 +30,35 @@ end
 
 def initial_round
   # calls deal_card twice and returns the sum
-  sum = deal_card + deal_card
+  card1 = deal_card
+  card2 = deal_card
+  sum = card1 + card2
   puts "Your cards add up to #{sum}"
   return sum
 end
 
-def hit?
-  # code hit? here
+def hit?(card_total)
   prompt_user
-  get_user_input
-  return card_total
+  user_input = get_user_input
   if user_input == "s"
-    break
+    return card_total
+  elsif user_input == 'h'
+    new_card = deal_card
+    card_total = card_total + new_card
+    return card_total
+  else invalid_command
   end
-  if user_input == 'h'
-    #hit?
-  end
+
 end
 
+
 def invalid_command
-  # code invalid_command here
+  user_input = get_user_input
+  until user_input == 's' || user_input == 'h'
+    puts "Please enter a valid command"
+    user_input = get_user_input
+  end
+
 end
 
 #####################################################
@@ -57,5 +66,11 @@ end
 #####################################################
 
 def runner
-  # code runner here
+  welcome
+  card_total = initial_round
+  until card_total > 21
+    card_total = hit?(card_total)
+    display_card_total(card_total)
+  end
+  end_game(card_total)
 end
