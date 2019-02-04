@@ -32,38 +32,33 @@ def initial_round
     sum
 end
 
-def hit(sum)?
-prompt_user_input
-user_input = get_user_input
-if user_input = 'h'
-  card_total += deal_card
-elsif user_input == "s"
-    card_total
+def hit?(sum)
+  prompt_user
+  if get_user_input == "s"
+    sum
   else
-  invalid_command
+    deal_card + sum
   end
+
+
 end
 
 def invalid_command
-  puts "Please enter a valid command"
-    prompt_user
-    get_user_inputend
 
 #####################################################
 # get every test to pass before coding runner below #
 #####################################################
+end
 
 def runner
-  welcome #introduce the game
-  sleep 0.75
-  card_total = initial_round #determine your current total & tell user what number they currently have
-  until card_total > 21 #continue game until user loses
-    card_total = hit?(card_total)
-    display_card_total(card_total)
+  welcome
+  sum = initial_round
+  until sum > 21
+    sum = hit?(sum)
+    display_card_total(sum)
   end
-  end_game(card_total) #prints out once user has lost
+end_game(sum)
 end
 
-runner 
+runner
   # code runner here
-end
