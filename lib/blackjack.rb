@@ -1,44 +1,58 @@
 def welcome
-  # code #welcome here
+  puts "Welcome to the Blackjack Table"
 end
 
 def deal_card
-  # code #deal_card here
+  rand(1..11)
 end
 
-def display_card_total
-  # code #display_card_total here
+def display_card_total(card_total)
+  puts "Your cards add up to #{card_total}"
 end
 
 def prompt_user
-  # code #prompt_user here
+  puts "Type 'h' to hit or 's' to stay"
 end
 
 def get_user_input
-  # code #get_user_input here
+  gets.chomp
 end
 
-def end_game
-  # code #end_game here
+def end_game(number)
+  puts "Sorry, you hit #{number}. Thanks for playing!"
 end
 
 def initial_round
-  # code #initial_round here
-end
-
-def hit?
-  # code hit? here
+  num1 = deal_card
+  num2 = deal_card
+  sum = num1 + num2
+  display_card_total sum
+  sum
 end
 
 def invalid_command
-  # code invalid_command here
+  puts "This is an invalid command!"
 end
+
+def hit?(arg)
+  prompt_user
+  answer = get_user_input
+  if answer == 'h'
+    arg += deal_card
+    display_card_total arg
+  end
+  arg
+end
+
+
 
 #####################################################
 # get every test to pass before coding runner below #
 #####################################################
 
 def runner
-  # code runner here
+  welcome
+  initial_sum = initial_round
+  total = hit? initial_sum
+  end_game total
 end
-    
