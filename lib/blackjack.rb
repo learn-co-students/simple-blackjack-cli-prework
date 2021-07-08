@@ -7,7 +7,8 @@ def deal_card
 end
 
 def display_card_total
-  # code #display_card_total here
+  while card_total < 21
+  hit += card_total
 end
 
 def prompt_user
@@ -39,6 +40,13 @@ end
 #####################################################
 
 def runner
-  # code runner here
+ welcome
+ initial_round
+ current_total = initial_round
+ while current_total < 21
+ current_total = hit?
+ (current_total)
 end
-    
+display_card_total(current_total)
+end_game(current_total)
+end
